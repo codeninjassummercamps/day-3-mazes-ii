@@ -1,33 +1,47 @@
- 
+# Day 3 Mazes II
 
+```template
+let going = 0
+player.onChat("maze", function () {
+    agent.teleport(world(-7, 0, -3), NORTH)
+})
+```
 
-> Open this page at [https://codeninjassummercamps.github.io/day-3-mazes-ii/](https://codeninjassummercamps.github.io/day-3-mazes-ii/)
+## Mazes II
 
-## Use as Extension
+Listen to Sensei to learn how to write code that will allow the agent to navigate the spiral maze.
 
-This repository can be added as an **extension** in MakeCode.
+## Finished Code
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/codeninjassummercamps/day-3-mazes-ii** and import
+Good job listening to Sensei, you can check your code with the hint. Now try the bonus!
 
-## Edit this project ![Build status badge](https://github.com/codeninjassummercamps/day-3-mazes-ii/workflows/MakeCode/badge.svg)
+```blocks
+let going = 0
+player.onChat("maze", function () {
+    agent.teleport(world(-7, 0, -3), NORTH)
+    going = 1
+})
+loops.forever(function(){
+    if(going == 1){
+        if(agent.detect(AgentDetection.Block, FORWARD)){
+            agent.turn(TurnDirection.Right)
+        }else{
+            agent.move(FORWARD, 1)
+        }
+    }
+})
+```
 
-To edit this repository in MakeCode.
+## Bonus
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/codeninjassummercamps/day-3-mazes-ii** and click import
+The agent can get into the maze and get to the center, but what happens in the center? First, try making a way to stop the agent from moving using a chat command. Once you've tried that, what can you do to teach the agent to get back out of the maze? This is a really tricky challenge, but if there is time, your Senseis can show you how to do it!
 
-## Blocks preview
+```blocks
+player.onChat("stop", function () {
+    going = 0
+})
+```
 
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
+## Activity Complete!
 
-![A rendered view of the blocks](https://github.com/codeninjassummercamps/day-3-mazes-ii/raw/master/.github/makecode/blocks.png)
-
-#### Metadata (used for search, rendering)
-
-* for PXT/arcade
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+You did it! You explored new conditionals and learned about the ``||logic.else||`` part of a conditional! 
